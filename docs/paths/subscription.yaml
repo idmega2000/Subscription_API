@@ -1,0 +1,95 @@
+paths:
+  /payment/subscriptions:
+    get:
+      tags:
+        - Subscription
+      summary: Gets all Subscription
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: userId
+        description: The user id
+        required: false
+      responses:
+        200:
+          description: Response Get all allowed Subscription
+          schema:
+            type: 'object'
+            properties:
+              success:
+                type: 'boolean'
+                example: 'true'
+              message:
+                type: string
+                example: successful
+    post:
+      tags:
+        - Subscription
+      summary: Add a Subscription
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: requestBody
+        description: The request body
+        required: true
+        schema:
+          type: object
+          properties:
+            periodId:
+              type: number
+              example: 10
+              required: true
+            userId:
+              type: number
+              example: 10
+              required: true
+      responses:
+        200:
+          description: Response for successful authentication
+          schema:
+            type: 'object'
+            properties:
+              success:
+                type: 'boolean'
+                example: 'true'
+              message:
+                type: string
+                example: 'successful'
+        400:
+          description: response for invalid parameter name
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: publicKey is required
+  /payment/subscriptions/{subscriptionId}:
+    delete:
+      tags:
+        - Subscription
+      summary: Delete or stop a pyament Subscription
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: subscriptionId
+        description: The Subscription id
+      responses:
+        200:
+          description: Response for successful delete
+          schema:
+            type: 'object'
+            properties:
+              success:
+                type: 'boolean'
+                example: 'true'
+              message:
+                type: string
+                example: 'successful'
+
+

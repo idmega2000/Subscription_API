@@ -1,0 +1,169 @@
+paths:
+  /payment/gateways:
+    get:
+      tags:
+        - Payment Gateway
+      summary: Gets all payment gateway
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Response for Get all allowed payment gateway
+          schema:
+            type: 'object'
+            properties:
+              success:
+                type: 'boolean'
+                example: 'true'
+              message:
+                type: string
+                example: successful
+    post:
+      tags:
+        - Payment Gateway
+      summary: Add a payment gateway
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: requestBody
+        description: The request body
+        required: true
+        schema:
+          type: object
+          properties:
+            identifier:
+              type: string
+              example: PAYSTACK
+              required: true
+            secretKey:
+              type: string
+              example: Sttud_djkksjldkjd
+            publicKey:
+              type: string
+              example: sodksjokdjloaksjiidj
+            encryptionKey:
+              type: string
+              example: Hjudklkskdk
+      responses:
+        200:
+          description: Response for successful authentication
+          schema:
+            type: 'object'
+            properties:
+              success:
+                type: 'boolean'
+                example: 'true'
+              message:
+                type: string
+                example: 'successful'
+        400:
+          description: response for invalid parameter name
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: publicKey is required
+  /payment/gateways/{gatewayId}:
+    put:
+      tags:
+        - Payment Gateway
+      summary: Update a pyament gateway
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: gatewayId
+        description: The gateway id
+      - in: body
+        name: requestBody
+        description: The request body
+        required: true
+        schema:
+          type: object
+          properties:
+            secretKey:
+              type: string
+              example: Sttud_djkksjldkjd
+            publicKey:
+              type: string
+              example: sodksjokdjloaksjiidj
+            encryptionKey:
+              type: string
+              example: Hjudklkskdk
+
+      responses:
+        200:
+          description: Response for successful authentication
+          schema:
+            type: 'object'
+            properties:
+              success:
+                type: 'boolean'
+                example: 'true'
+              message:
+                type: string
+                example: 'successful'
+        400:
+          description: response for invalid parameter name
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: publicKey is required
+
+    delete:
+      tags:
+        - Payment Gateway
+      summary: Delete a pyament gateway
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: gatewayId
+        description: The gateway id
+      responses:
+        200:
+          description: Response for successful delete
+          schema:
+            type: 'object'
+            properties:
+              success:
+                type: 'boolean'
+                example: 'true'
+              message:
+                type: string
+                example: 'successful'
+
+  /payment/gateways/toggle/allow/{gatewayId}:
+    put:
+      tags:
+        - Payment Gateway
+      summary: Update a pyament gateway
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: gatewayId
+        description: The gateway id
+      responses:
+        200:
+          description: Response for successful authentication
+          schema:
+            type: 'object'
+            properties:
+              success:
+                type: 'boolean'
+                example: 'true'
+              message:
+                type: string
+                example: successfule
+

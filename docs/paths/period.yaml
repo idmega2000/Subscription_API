@@ -1,0 +1,147 @@
+paths:
+  /payment/periods/{planId}:
+    get:
+      tags:
+        - Period
+      summary: Gets all payment gateway
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: planId
+        description: The plan id
+      responses:
+        200:
+          description: Response Get all allowed payment gateway
+          schema:
+            type: 'object'
+            properties:
+              success:
+                type: 'boolean'
+                example: 'true'
+              message:
+                type: string
+                example: successful
+
+  /payment/periods:
+    post:
+      tags:
+        - Period
+      summary: Add a Period
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: requestBody
+        description: The request body
+        required: true
+        schema:
+          type: object
+          properties:
+            price:
+              type: number
+              example: 100
+              required: true
+            planId:
+              type: number
+              example: 4
+            discount:
+              type: number
+              example: 10
+            period:
+              type: string
+              example: monthly
+      responses:
+        200:
+          description: Response for successful authentication
+          schema:
+            type: 'object'
+            properties:
+              success:
+                type: 'boolean'
+                example: 'true'
+              message:
+                type: string
+                example: 'successful'
+        400:
+          description: response for invalid parameter name
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: plan is required
+  /payment/periods/{periodId}:
+    put:
+      tags:
+        - Period
+      summary: Update a period
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: periodId
+        description: The period id
+      - in: body
+        name: requestBody
+        description: The request body
+        required: true
+        schema:
+          type: object
+          properties:
+            price:
+              type: number
+              example: 100
+              required: true
+            discount:
+              type: number
+              example: 10
+
+      responses:
+        200:
+          description: Response for successful authentication
+          schema:
+            type: 'object'
+            properties:
+              success:
+                type: 'boolean'
+                example: 'true'
+              message:
+                type: string
+                example: 'successful'
+        400:
+          description: response for invalid parameter name
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: price is required
+    delete:
+      tags:
+        - Period
+      summary: Delete a period
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: periodId
+        description: The period id
+      responses:
+        200:
+          description: Response for successful delete
+          schema:
+            type: 'object'
+            properties:
+              success:
+                type: 'boolean'
+                example: 'true'
+              message:
+                type: string
+                example: 'successful'
