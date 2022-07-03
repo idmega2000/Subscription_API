@@ -2,8 +2,6 @@
 A subscription api
 
 
-Visit App [Here]
-
 |  Functionality     |Http Request   | Api endpoints    |
 |  -------------     | ------------- | ---------------- |
 | Plan | POST,GET,PUT,DELETE           | /plans         |
